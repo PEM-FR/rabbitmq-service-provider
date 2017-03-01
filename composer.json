@@ -1,14 +1,17 @@
 {
-    "name": "fiunchinho/rabbitmq-service-provider",
-    "description": "Silex service provider for RabbitMQ",
+    "name": "PEM-FR/rabbitmq-service-provider",
+    "description": "Silex service provider for RabbitMQ, updated from fiunchinho/rabbitmq-service-provider",
     "keywords": [ "amqp", "RabbitMQ", "silex" ],
-    "homepage": "http://github.com/fiunchinho/rabbitmq-service-provider",
+    "homepage": "http://github.com/PEM-FR/rabbitmq-service-provider",
     "license": "MIT",
     "authors": [
         {
             "name": "Jose Armesto",
             "email": "jose@armesto.net",
             "homepage": "http://blog.armesto.net"
+        },
+        {
+            "name": "PEM-FR"
         }
     ],
     "require": {
