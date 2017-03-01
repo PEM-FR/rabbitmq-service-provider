@@ -7,9 +7,27 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Knp\Command\Command as BaseCommand;
+use OldSound\RabbitMqBundle\RabbitMq\Consumer as RabbitMqConsumer;
 
+/**
+ * Class Consumer
+ * @package fiunchinho\Silex\Command
+ */
 class Consumer extends BaseCommand
 {
+    /**
+     * @var int
+     */
+    protected $amount = 50;
+
+    /**
+     * @var RabbitMqConsumer
+     */
+    protected $consumer;
+
+    /**
+     *
+     */
     protected function configure()
     {
         $this
@@ -51,10 +69,14 @@ class Consumer extends BaseCommand
             $this->consumer->setMemoryLimit($input->getOption('memory-limit'));
         }
         $this->consumer->setRoutingKey($input->getOption('route'));
-        $this->consumer->consume($this->amount);
+        return $this->consumer->consume($this->amount);
     }
 
-    protected function getConsumerInstance($input)
+    /**
+     * @param InputInterface $input
+     * @return RabbitMqConsumer
+     */
+    protected function getConsumerInstance(InputInterface $input)
     {
     	$app = $this->getSilexApplication();
     	return $app['rabbit.consumer'][$input->getArgument('name')];
